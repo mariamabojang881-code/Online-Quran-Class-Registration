@@ -1,96 +1,221 @@
+
 <html lang="en">
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quranic Online Class Registration</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #134e4a);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .star {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: white;
+      border-radius: 50%;
+      animation: fly 12s linear infinite;
+      opacity: 0.8;
+    }
+
+    .star:nth-child(1) { left: 10%; animation-duration: 8s; }
+    .star:nth-child(2) { left: 20%; animation-duration: 10s; }
+    .star:nth-child(3) { left: 35%; animation-duration: 7s; }
+    .star:nth-child(4) { left: 50%; animation-duration: 11s; }
+    .star:nth-child(5) { left: 65%; animation-duration: 9s; }
+    .star:nth-child(6) { left: 80%; animation-duration: 13s; }
+    .star:nth-child(7) { left: 92%; animation-duration: 6s; }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .form-box {
+      width: 90%;
+      max-width: 450px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 35px;
+      color: white;
+      position: relative;
+      z-index: 2;
+      animation: floating 4s ease-in-out infinite;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    @keyframes floating {
+      0%,100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #d1fae5;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      height: 80px;
+      resize: none;
+    }
 
     button {
       width: 100%;
-      padding: 12px;
-      background: #25D366;
-      color: white;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border-radius: 10px;
+      background: #22c55e;
+      color: white;
       font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-
     button:hover {
-      background: #1ebe5d;
+      background: #16a34a;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #e2e8f0;
     }
   </style>
 </head>
 <body>
 
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
 
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
+  <div class="form-box">
+    <h1>Quranic Online Class</h1>
+    <p class="subtitle">Student Admission Registration Form</p>
 
+    <form onsubmit="sendWhatsApp(event)">
 
-  <div class="form-container">
-    <h2>Quranic Class Registration</h2>
-    <form onsubmit="sendToWhatsApp(event)">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="number" id="age" placeholder="Age" required>
+      <input type="text" id="fullname" placeholder="Student Full Name" required>
+
+      <input type="number" id="age" placeholder="Student Age" required>
+
       <select id="gender" required>
         <option value="">Select Gender</option>
         <option>Male</option>
         <option>Female</option>
       </select>
+
       <input type="text" id="country" placeholder="Country" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
+
+      <input type="tel" id="phone" placeholder="WhatsApp Number" required>
+
       <input type="email" id="email" placeholder="Email Address" required>
-      <select id="level" required>
-        <option value="">Select Level</option>
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Advanced</option>
+
+      <select id="program" required>
+        <option value="">Select Program</option>
+        <option>Quran Reading</option>
+        <option>Tajweed</option>
+        <option>Memorization (Hifz)</option>
+        <option>Islamic Studies</option>
       </select>
+
+      <textarea id="message" placeholder="Why do you want to join our Quranic class?"></textarea>
+
       <button type="submit">Register via WhatsApp</button>
+
     </form>
+
+    <div class="footer">
+      Learn Quran Online From Anywhere In The World
+    </div>
   </div>
 
+  <script>
+    function sendWhatsApp(event) {
+      event.preventDefault();
 
-<script>
-function sendToWhatsApp(event) {
-  event.preventDefault();
+      var fullname = document.getElementById('fullname').value;
+      var age = document.getElementById('age').value;
+      var gender = document.getElementById('gender').value;
+      var country = document.getElementById('country').value;
+      var phone = document.getElementById('phone').value;
+      var email = document.getElementById('email').value;
+      var program = document.getElementById('program').value;
+      var message = document.getElementById('message').value;
 
+      var yourNumber = '2207123456';
 
-  var name = document.getElementById("name").value;
-  var age = document.getElementById("age").value;
-  var gender = document.getElementById("gender").value;
-  var country = document.getElementById("country").value;
-  var phone = document.getElementById("phone").value;
-  var email = document.getElementById("email").value;
-  var level = document.getElementById("level").value;
+      var text = `*NEW QURANIC CLASS REGISTRATION*%0A%0A`
+        + `👤 Name: ${fullname}%0A`
+        + `🎂 Age: ${age}%0A`
+        + `⚧ Gender: ${gender}%0A`
+        + `🌍 Country: ${country}%0A`
+        + `📱 Phone: ${phone}%0A`
+        + `📧 Email: ${email}%0A`
+        + `📚 Program: ${program}%0A`
+        + `📝 Message: ${message}`;
 
+      var url = `https://wa.me/${yourNumber}?text=${text}`;
 
-  var message = `*QURANIC CLASS REGISTRATION*%0A
-Name: ${name}%0AAge: ${age}%0AGender: ${gender}%0ACountry: ${country}%0APhone: ${phone}%0AEmail: ${email}%0ALevel: ${level}`;
-
-
-  // 🔴 IMPORTANT: Replace this number with your WhatsApp number
-  var whatsappNumber = "220XXXXXXXX";
-
-
-  var url = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-
-  window.open(url, '_blank');
-}
-</script>
-
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
 </html>
-
-
-
-Now your form sends submissions directly to WhatsApp 👍
-
-Here’s how it works (simple explanation):
